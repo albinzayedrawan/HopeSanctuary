@@ -2,6 +2,9 @@
 
 A MERN stack pet adoption website that aims to simplify the process of finding homes for animals that are present in adoption organizations and shelters.
 
+## Prototype ([Click here to view prototype](https://www.figma.com/proto/yzr3Eu2ofZpj0sE7i9X94T/Prototype?node-id=22-5&node-type=canvas&t=eDp9Pvd3tUS5nhLi-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=22%3A5)):
+![Prototype](https://github.com/user-attachments/assets/e1104c54-df27-429f-b82e-50aa7982f2d4)
+
 ## Instructions:
 
 1. **Clone the Repository**  
