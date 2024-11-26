@@ -67,8 +67,8 @@ A MERN stack pet adoption website that aims to simplify the process of finding h
 
 ```plaintext
 hopesanctuary/
-├── client/             # Frontend application
-├── server/             # Backend API
+├── frontend/           # Frontend application
+├── backend/            # Backend API
 ├── .gitignore          # Files to ignore in Git
 ├── LICENSE             # Project License
 ├── README.md           # Project documentation
@@ -86,8 +86,3 @@ We welcome contributions! Please follow these steps:
 ## License:
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Contact:
-
-For questions or feedback, feel free to contact us:  
-- **Website**: [www.hopesanctuary.com](http://www.hopesanctuary.com)
