@@ -1,6 +1,6 @@
-## Contributing:
+# CONTRIBUTING
 
-We welcome contributions! Please follow these steps:  
+Please follow these steps:  
 1. Fork the repository.  
 2. Create a new branch (`git checkout -b feature/your-feature-name`).  
 3. Commit your changes (`git commit -m 'Add your message here'`).  
