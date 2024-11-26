@@ -24,7 +24,7 @@ A MERN stack pet adoption website that aims to simplify the process of finding h
      ```
 
 3. **Set Up Environment Variables**  
-   Create a `.env` file in the `server` directory with the following variables:  
+   Create a `.env` file in the `backend` directory with the following variables:  
    ```env
    PORT=5000
    MONGO_URI=your_mongo_db_connection_string
@@ -32,13 +32,13 @@ A MERN stack pet adoption website that aims to simplify the process of finding h
    ```
 
 4. **Run the Application**  
-   Open two terminals to run both client and server:  
-   - **Client**:  
+   Open two terminals to run both frontend and backend:  
+   - **Frontend**:  
      ```bash
      cd frontend
      npm start
      ```
-   - **Server**:  
+   - **Backend**:  
      ```bash
      cd backend
      node index.js
