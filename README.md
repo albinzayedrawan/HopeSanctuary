@@ -69,7 +69,6 @@ A MERN stack pet adoption website that aims to simplify the process of finding h
 hopesanctuary/
 ├── frontend/           # Frontend application
 ├── backend/            # Backend API
-├── .gitignore          # Files to ignore in Git
 ├── LICENSE             # Project License
 ├── README.md           # Project documentation
 ```
