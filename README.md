@@ -7,7 +7,7 @@ A MERN stack pet adoption website that aims to simplify the process of finding h
 1. **Clone the Repository**  
    ```bash
    git clone https://github.com/albinzayedrawan/hopesanctuary.git
-   cd hope-sanctuary
+   cd hopesanctuary
    ```
 
 2. **Install Dependencies**  
