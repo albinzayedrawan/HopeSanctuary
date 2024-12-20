@@ -1,0 +1,211 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pets Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .light-blue-section {
+            background-color: #e6f4fc;
+            padding: 30px 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .light-blue-section h1, .light-blue-section p {
+            color: #333;
+        }
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card .card-body {
+            padding: 20px 0;
+            text-align: center;
+            height: 80px;
+        }
+
+        .bailey-card .card-body {
+            background-color: #44d49a; /* Green */
+            height: 120px; /* Increased height */
+            color: black; /* Black text */
+        }
+
+        .tiger-card .card-body {
+            background-color: #fdce43; /* Yellow */
+            height: 120px; /* Increased height */
+            color: black; /* Black text */
+        }
+
+        .fluffy-card .card-body {
+            background-color: #e87272; /* Red */
+            height: 120px; /* Increased height */
+            color: black; /* Black text */
+        }
+
+        .card-title {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .card-text {
+            margin: 5px 0 0;
+            font-size: 1rem;
+        }
+
+        .search-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .filter-btn, .sort-btn {
+            background-color: #1675d3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .filter-btn:hover, .sort-btn:hover {
+            background-color: #125ca1;
+        }
+
+        .search-bar-container {
+            display: flex;
+            align-items: center;
+            border: 2px solid #1675d3;
+            border-radius: 25px;
+            overflow: hidden;
+        }
+
+        .search-bar {
+            width: 300px;
+            border: none;
+            padding: 10px;
+            outline: none;
+            border-radius: 0;
+        }
+
+        .search-btn {
+            background-color: #1675d3;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .search-btn:hover {
+            background-color: #125ca1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg" style="background-color: #1675d3;">
+        <div class="container-fluid">
+            <!-- Logo and Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="logo.jpg" alt="Logo" style="height: 50px; margin-right: 10px;">
+                <div class="d-flex flex-column">
+                    <span class="text-white fw-bold" style="font-size: 1.25rem;">Hope Sanctuary</span>
+                    <span class="text-white" style="font-size: 0.9rem;">Adoption Center</span>
+                </div>
+            </a>
+            <!-- Toggler for smaller screens -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navigation Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-white" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white active" href="pets.html">Pets</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="adopt.html">Adopt</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Light Blue Section -->
+    <div class="container light-blue-section">
+        <h1 class="text-center">Meet The Pets</h1>
+        <p class="text-center">Adopting a pet is a wonderful way to bring love and companionship into your life while giving an animal a second chance at a happy home.</p>
+        
+        <!-- Filter, Sort, and Search -->
+        <div class="search-controls">
+            <button class="filter-btn">Filter <span class="ms-1">&#9662;</span></button>
+            <button class="sort-btn">Sort <span class="ms-1">&#x2630;</span></button>
+            <div class="search-bar-container">
+                <input type="text" class="form-control search-bar" placeholder="Search">
+                <button class="search-btn">&#128269;</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pets Section -->
+    <div class="container">
+        <div class="row">
+            <!-- Pet 1 -->
+            <div class="col-md-4 mb-4">
+                <a href="petdetails.html?name=Bailey" class="text-decoration-none">
+                    <div class="card bailey-card">
+                        <img src="1.jpg" class="card-img-top" alt="Bailey">
+                        <div class="card-body">
+                            <h5 class="card-title">Bailey</h5>
+                            <p class="card-text">1 year | Female</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Pet 2 -->
+            <div class="col-md-4 mb-4">
+                <a href="petdetails.html?name=Tiger" class="text-decoration-none">
+                    <div class="card tiger-card">
+                        <img src="2.jpg" class="card-img-top" alt="Tiger">
+                        <div class="card-body">
+                            <h5 class="card-title">Tiger</h5>
+                            <p class="card-text">2 years | Male</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Pet 3 -->
+            <div class="col-md-4 mb-4">
+                <a href="petdetails.html?name=Fluffy" class="text-decoration-none">
+                    <div class="card fluffy-card">
+                        <img src="8.jpg" class="card-img-top" alt="Fluffy">
+                        <div class="card-body">
+                            <h5 class="card-title">Fluffy</h5>
+                            <p class="card-text">5 months | Female</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

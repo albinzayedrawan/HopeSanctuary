@@ -1,0 +1,109 @@
+<!DOCTYPE <html>>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopt A Pet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-section {
+            background-color: #e6f4fc;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .btn-submit {
+            background-color: #fdd835;
+            color: #333;
+            border: none;
+            font-weight: bold;
+        }
+        .btn-submit:hover {
+            background-color: #e2c52e;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #1675d3;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="logo.jpg" alt="Logo" style="height: 50px; margin-right: 10px;">
+                <div class="d-flex flex-column">
+                    <span class="text-white fw-bold" style="font-size: 1.25rem;">Hope Sanctuary</span>
+                    <span class="text-white" style="font-size: 0.9rem;">Adoption Center</span>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-white" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="pets.html">Pets</a></li>
+                    <li class="nav-item"><a class="nav-link text-white active" href="adopt.html">Adopt</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container form-section">
+        <h1 class="text-center">Adopt A Pet</h1>
+        <p class="text-center">Fill out the form below to submit your adoption application. Once a member of staff has reviewed your application, you will be contacted to meet your pet and complete the adoption process.</p>
+        <form>
+         
+            <div class="mb-3">
+                <label for="petSelect" class="form-label">Pet</label>
+                <select class="form-select" id="petSelect">
+                    <option selected>Select the pet you want to adopt</option>
+                    <option value="Bailey">Bailey</option>
+                    <option value="Tiger">Tiger</option>
+                    <option value="Fluffy">Fluffy</option>
+                </select>
+            </div>
+
+           
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="First Last">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="phone" class="form-label">Phone number</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="+973 xxxxxxxx">
+                </div>
+            </div>
+
+         
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="name@email.com">
+                <small>Already have an account? <a href="login.html" class="text-decoration-none">login here</a></small>
+            </div>
+
+        
+            <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control mb-2" id="addressLine1" placeholder="Address Line 1">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="city" placeholder="City">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="postalCode" placeholder="Postal / ZIP code">
+                    </div>
+                </div>
+            </div>
+
+       
+            <div class="text-center">
+                <button type="submit" class="btn btn-submit px-4">Submit Application</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
