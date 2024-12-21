@@ -1,0 +1,190 @@
+/* General styling for the details section */
+.details-section {
+    margin-top: 20px;
+    padding: 20px;
+  }
+  
+  /* Styling for the pet image */
+  .pet-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Thumbnail styling */
+  .pet-image .thumbnails img {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .pet-image .thumbnails img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Card for details */
+  .details-card {
+    background-color: #d8ecff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Button styling */
+  .adopt-button {
+    background-color: #fdce43;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: block;
+    margin: 20px auto;
+    text-decoration: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .adopt-button:hover {
+    background-color: #f0c533;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Typography */
+  .details-card h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .details-card h4 {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .details-card p {
+    margin: 5px 0;
+  }
+  
+  /* Pet Not Found */
+  .not-found {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e63946;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .header {
+    background-color: #007bb5;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header h1 {
+    margin: 0;
+  }
+  
+  .header nav a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .header nav a:hover {
+    text-decoration: underline;
+  }
+  
+  .details-page {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .details-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .image-section {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .main-image {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .thumbnails img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .thumbnails img:hover {
+    border-color: #007bb5;
+  }
+  
+  .info-section {
+    flex: 1;
+    background-color: #e6f2ff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .info-section h2 {
+    color: #007bb5;
+    margin-bottom: 10px;
+  }
+  
+  .info-section h3 {
+    margin-top: 20px;
+  }
+  
+  .info-section p {
+    margin: 8px 0;
+  }
+  
+  .adopt-button {
+    background-color: #ffd500;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .adopt-button:hover {
+    background-color: #ffbf00;
+  }
+  

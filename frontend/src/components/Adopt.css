@@ -1,0 +1,16 @@
+.form-section {
+    background-color: #e6f4fc;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  .btn-submit {
+    background-color: #fdd835;
+    color: #333;
+    border: none;
+    font-weight: bold;
+  }
+  .btn-submit:hover {
+    background-color: #e2c52e;
+  }
+  
