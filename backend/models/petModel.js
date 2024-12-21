@@ -12,7 +12,8 @@ const petSchema = new mongoose.Schema({
   vaccinated: { type: Boolean, required: true },
   neutered: { type: Boolean, required: true },
   medicalConditions: { type: String, required: true },
-  adoptionFee: { type: Number, required: true }
+  adoptionFee: { type: Number, required: true },
+  picture: { type: String, required: true }
 });
 
 module.exports = mongoose.model('Pet', petSchema);
