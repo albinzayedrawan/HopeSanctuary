@@ -30,7 +30,7 @@ A MERN stack pet adoption website that aims to simplify the process of finding h
    Create a `.env` file in the `backend` directory with the following variables:  
    ```env
    PORT=5000
-   MONGO_URI=your_mongo_db_connection_string
+   URL=your_mongo_db_connection_string
    JWT_SECRET=your_jwt_secret
    ```
 
