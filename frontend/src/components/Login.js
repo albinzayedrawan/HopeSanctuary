@@ -1,9 +1,42 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // For navigation links
-import './Login.css'; // Import Login-specific styles
-import logo from '../Images/logo.jpg'; // Import the logo image
+import React, { useState } from 'react'; 
+import { Link } from 'react-router-dom'; 
+import './Login.css'; 
+import logo from '../Images/logo.jpg'; 
 
-const Login = () => {
+const Login = ({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleLogin = async (e) => {
+    e.preventDefault(); // Prevent the default form submission
+    setLoading(true);
+    setError('');
+
+    try {
+      const response = await fetch('http://localhost:5000/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: username, password }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to log in');
+      }
+
+      const data = await response.json();
+      onLogin({ role: data.user.role, username: data.user.username, token: data.token }); // Pass user data and token to parent
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       {/* Navbar */}
@@ -40,21 +73,42 @@ const Login = () => {
       {/* Login Form */}
       <div className="form-container">
         <h1>Login</h1>
-        <form>
+        <form onSubmit={handleLogin}>
+          {error && <div className="alert alert-danger">{error}</div>}
           <div className="mb-3">
             <label htmlFor="email" className="form-label">Email</label>
-            <input type="email" className="form-control" id="email" required />
+            <input 
+              type="email" 
+              className="form-control" 
+              id="email" 
+              required 
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
           </div>
           <div className="mb-3">
             <label htmlFor="password" className="form-label">Password</label>
-            <input type="password" className="form-control" id="password" required />
+            <input 
+              type="password" 
+              className="form-control" 
+              id="password" 
+              required 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
           <div className="mb-3 form-text">
             <Link to="/forgot-password">Forgot Password?</Link>
           </div>
-          <button type="submit" className="btn btn-primary w-100">Login</button>
+          <button 
+            type="submit" 
+            className="btn btn-primary w-100"
+            disabled={loading}
+          >
+            {loading ? 'Logging in...' : 'Login'}
+          </button>
           <div className="mt-3 form-text">
-            Don't have an account? <Link to="/signup">Sign Up</Link> {/* Updated Sign Up link */}
+            Don't have an account? <Link to="/signup">Sign Up</Link>
           </div>
         </form>
       </div>

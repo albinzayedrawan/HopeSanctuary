@@ -1,9 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // For navigation links
 import './ContactUs.css'; // Import ContactUs-specific styles
 import logo from '../Images/logo.jpg'; // Import the logo image
+import { submitContactForm } from './API'; // Import submitContactForm function
 
-const ContactUs = () => {
+const ContactUs = ({ user, onLogout }) => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [formMessage, setFormMessage] = useState('');
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await submitContactForm(formData);
+      setFormMessage('Contact form submitted successfully!');
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+    } catch (err) {
+      setFormMessage('Failed to submit contact form.');
+      console.error('Error submitting contact form:', err);
+    }
+  };
+
   return (
     <>
       {/* Navbar */}
@@ -29,9 +65,29 @@ const ContactUs = () => {
               <li className="nav-item"><Link className="nav-link text-white" to="/">Home</Link></li>
               <li className="nav-item"><Link className="nav-link text-white" to="/pets">Pets</Link></li>
               <li className="nav-item"><Link className="nav-link text-white" to="/adopt">Adopt</Link></li>
-              <li className="nav-item"><Link className="nav-link text-white active" to="/contact">Contact Us</Link></li>
+              {/* Conditional Requests link */}
+              {user && (
+                <li className="nav-item"><Link className="nav-link text-white" to="/requests">Requests</Link></li>
+              )}
               <li className="nav-item"><Link className="nav-link text-white" to="/about">About Us</Link></li>
-              <li className="nav-item"><Link className="nav-link text-white" to="/login">Login</Link></li>
+              <li className="nav-item"><Link className="nav-link text-white" to="/contact">Contact Us</Link></li>
+              {/* Conditional Admin link */}
+              {user?.role === 'admin' && (
+                <li className="nav-item"><Link className="nav-link text-white" to="/admin">Admin Dashboard</Link></li>
+              )}
+              {/* Conditional Login/Logout */}
+              {user ? (
+                <li className="nav-item">
+                  <button
+                    className="btn nav-link text-white border-0 bg-transparent"
+                    onClick={onLogout}
+                  >
+                    Logout
+                  </button>
+                </li>
+              ) : (
+                <li className="nav-item"><Link className="nav-link text-white active" to="/login">Login</Link></li>
+              )}
             </ul>
           </div>
         </div>
@@ -68,28 +124,69 @@ const ContactUs = () => {
         {/* Contact Form */}
         <div className="contact-form">
           <h2 className="fw-bold text-center mb-4">Contact Form</h2>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="row mb-3">
               <div className="col">
-                <input type="text" className="form-control" placeholder="First Name" required />
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="First Name"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
               <div className="col">
-                <input type="text" className="form-control" placeholder="Last Name" required />
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Last Name"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
             </div>
             <div className="mb-3">
-              <input type="email" className="form-control" placeholder="Email" required />
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+              />
             </div>
             <div className="mb-3">
-              <input type="text" className="form-control" placeholder="Subject" required />
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Subject"
+                name="subject"
+                value={formData.subject}
+                onChange={handleInputChange}
+                required
+              />
             </div>
             <div className="mb-3">
-              <textarea className="form-control" rows="5" placeholder="Your Message" required></textarea>
+              <textarea
+                className="form-control"
+                rows="5"
+                placeholder="Your Message"
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                required
+              ></textarea>
             </div>
             <div className="text-center">
               <button type="submit" className="btn-submit">Submit</button>
             </div>
           </form>
+          {formMessage && <p className="text-center mt-3">{formMessage}</p>}
         </div>
       </div>
     </>

@@ -3,7 +3,7 @@ const AdoptionForm = require('../models/adoptionFormModel');
 // Get all adoption forms
 exports.getAllAdoptionForms = async (req, res) => {
   try {
-    const forms = await AdoptionForm.find().populate('pet');
+    const forms = await AdoptionForm.find().populate('pet').populate('user');
     res.status(200).json(forms);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -13,7 +13,7 @@ exports.getAllAdoptionForms = async (req, res) => {
 // Get adoption form by ID
 exports.getAdoptionFormById = async (req, res) => {
   try {
-    const form = await AdoptionForm.findById(req.params.id).populate('pet');
+    const form = await AdoptionForm.findById(req.params.id).populate('pet').populate('user');
     if (!form) return res.status(404).json({ message: 'Form not found' });
     res.status(200).json(form);
   } catch (error) {
@@ -23,7 +23,10 @@ exports.getAdoptionFormById = async (req, res) => {
 
 // Create a new adoption form
 exports.createAdoptionForm = async (req, res) => {
-  const form = new AdoptionForm(req.body);
+  const form = new AdoptionForm({
+    ...req.body,
+    user: req.user._id // Ensure user ID is included
+  });
   try {
     const newForm = await form.save();
     res.status(201).json(newForm);
@@ -49,6 +52,16 @@ exports.deleteAdoptionForm = async (req, res) => {
     const deletedForm = await AdoptionForm.findByIdAndDelete(req.params.id);
     if (!deletedForm) return res.status(404).json({ message: 'Form not found' });
     res.status(200).json({ message: 'Form deleted' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Get adoption forms by token
+exports.getAdoptionFormsByToken = async (req, res) => {
+  try {
+    const forms = await AdoptionForm.find({ user: req.user._id }).populate('pet').populate('user');
+    res.status(200).json(forms);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

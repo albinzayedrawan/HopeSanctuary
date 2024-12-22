@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+  }
+  
+  nav {
+    background-color: #1675d3;
+  }
+  
+  nav a {
+    color: white;
+  }
+  
+  .container-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .table-container {
+    background-color: #d8ecff;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .filter-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .filter-buttons .btn {
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-bar input {
+    border: 2px solid #1675d3;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin-right: 10px;
+  }
+  
+  .search-bar button {
+    background-color: #ffc107;
+    border: none;
+    border-radius: 20px;
+    color: black;
+    padding: 5px 15px;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .search-bar button:hover {
+    background-color: #e0a800;
+  }
+  
+  table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+  }
+  
+  table th {
+    background-color: #ffc107;
+    padding: 10px;
+  }
+  
+  table td {
+    background-color: #ffffff;
+    padding: 10px;
+  }
+  
+  table th, table td {
+    border: 1px solid #ddd;
+  }
+  
+  table tr:nth-child(even) td {
+    background-color: #f8f9fa;
+  }

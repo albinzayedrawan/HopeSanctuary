@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const adoptionFormSchema = new mongoose.Schema({
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Add user field
   pet: { type: mongoose.Schema.Types.ObjectId, ref: 'Pet', required: true },
   name: { type: String, required: true },
   phoneNumber: { type: String, required: true },

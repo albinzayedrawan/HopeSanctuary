@@ -24,35 +24,19 @@ exports.getUserById = async (req, res) => {
 
 // Create a new user
 exports.createUser = async (req, res) => {
-  const user = new User(req.body);
+  const { email, password, firstName, lastName, phoneNumber, role } = req.body; // Ensure role is included
+  console.log('Request body:', req.body); // Debugging statement
   try {
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: 'Email already exists' });
+    }
+    const user = new User({ email, password, firstName, lastName, phoneNumber, role });
     const newUser = await user.save();
     const token = await user.generateAuthToken();
     res.status(201).json({ user: newUser, token });
   } catch (error) {
     res.status(400).json({ message: error.message });
-  }
-};
-
-// Update a user
-exports.updateUser = async (req, res) => {
-  try {
-    const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!updatedUser) return res.status(404).json({ message: 'User not found' });
-    res.status(200).json(updatedUser);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-};
-
-// Delete a user
-exports.deleteUser = async (req, res) => {
-  try {
-    const deletedUser = await User.findByIdAndDelete(req.params.id);
-    if (!deletedUser) return res.status(404).json({ message: 'User not found' });
-    res.status(200).json({ message: 'User deleted' });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
   }
 };
 
@@ -70,6 +54,27 @@ exports.loginUser = async (req, res) => {
     }
     const token = await user.generateAuthToken();
     res.status(200).json({ user, token });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+// Update a user
+exports.updateUser = async (req, res) => {
+  try {
+    const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updatedUser) return res.status(404).json({ message: 'User not found' });
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+// Delete a user
+exports.deleteUser = async (req, res) => {
+  try {
+    const deletedUser = await User.findByIdAndDelete(req.params.id);
+    if (!deletedUser) return res.status(404).json({ message: 'User not found' });
+    res.status(200).json({ message: 'User deleted' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
