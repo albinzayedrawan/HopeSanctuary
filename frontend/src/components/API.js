@@ -129,3 +129,17 @@ export const updatePet = async (id, petData, token) => {
     throw error;
   }
 };
+
+export const updateRequestStatus = async (requestId, status, token) => {
+  try {
+    const response = await axios.put(`${API_BASE_URL}/adoption-forms/${requestId}`, { status }, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error updating request status:", error);
+    throw error;
+  }
+};

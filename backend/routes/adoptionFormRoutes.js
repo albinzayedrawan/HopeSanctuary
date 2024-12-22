@@ -9,7 +9,7 @@ router.post('/', authMiddleware, adoptionFormController.createAdoptionForm); // 
 router.put('/:id', authMiddleware, adminMiddleware, adoptionFormController.updateAdoptionForm); // Admin only
 router.delete('/:id', authMiddleware, adminMiddleware, adoptionFormController.deleteAdoptionForm); // Admin only
 
-// New route to fetch requests for the authenticated user using the token
+// route to fetch requests for the authenticated user using the token
 router.get('/me', authMiddleware, adoptionFormController.getAdoptionFormsByToken);
 
 module.exports = router;

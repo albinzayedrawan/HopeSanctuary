@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import './Requests.css';
 import logo from '../Images/logo.jpg'; // Adjust the path to your logo image
-import { fetchUserRequestsByToken, fetchAdoptionRequests } from './API'; // Import the fetchUserRequestsByToken and fetchAdoptionRequests functions
+import { fetchUserRequestsByToken, fetchAdoptionRequests, updateRequestStatus } from './API'; // Import the updateRequestStatus function
 
 const Requests = ({ user, onLogout }) => {
   const [requests, setRequests] = useState([]);
   const [error, setError] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const getRequests = async () => {
@@ -38,6 +39,29 @@ const Requests = ({ user, onLogout }) => {
 
     getRequests();
   }, [user]);
+
+  // Redirect non-admin users
+  if (user?.role !== 'admin') {
+    return <Navigate to="/" />;
+  }
+
+  const handleStatusUpdate = async (requestId, status) => {
+    const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
+    if (token) {
+      try {
+        await updateRequestStatus(requestId, status, token);
+        setRequests(requests.map(request => request._id === requestId ? { ...request, status } : request));
+      } catch (err) {
+        setError('Failed to update request status');
+        console.error('Error updating request status:', err);
+      }
+    }
+  };
+
+  const filteredRequests = requests.filter(request =>
+    request.pet.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    request.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <>
@@ -96,36 +120,38 @@ const Requests = ({ user, onLogout }) => {
 
         <div className="table-container">
           <div className="filter-buttons">
-            <div>
-              <button className="btn btn-primary">All ({requests.length})</button>
-              <button className="btn btn-light">Active</button>
-              <button className="btn btn-light">Trash</button>
-            </div>
             <div className="search-bar">
-              <input type="text" placeholder="Search Form" className="form-control" />
+              <input
+                type="text"
+                placeholder="Search by Pet Name or User Name"
+                className="form-control"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
               <button type="submit">🔍</button>
             </div>
           </div>
 
-          {requests.length > 0 ? (
+          {filteredRequests.length > 0 ? (
             <table>
               <thead>
                 <tr>
-                  <th>Status</th>
-                  <th>Title</th>
-                  <th>Customer Name</th>
-                  <th>Pet ID</th>
                   <th>Pet Name</th>
+                  <th>Adopter Name</th>
+                  <th>Status</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {requests.map((request) => (
+                {filteredRequests.map((request) => (
                   <tr key={request._id}>
-                    <td>{request.status}</td>
-                    <td>{request.title}</td>
-                    <td>{request.name}</td>
-                    <td>{request.pet._id}</td>
                     <td>{request.pet.name}</td>
+                    <td>{request.name}</td>
+                    <td>{request.status}</td>
+                    <td>
+                      <button className="btn btn-success me-2" onClick={() => handleStatusUpdate(request._id, 'accepted')}>Accept</button>
+                      <button className="btn btn-danger" onClick={() => handleStatusUpdate(request._id, 'rejected')}>Reject</button>
+                    </td>
                   </tr>
                 ))}
               </tbody>

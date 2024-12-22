@@ -68,7 +68,7 @@ const AddPetForm = ({ user, onLogout }) => {
   return (
     <>
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#1675d3' }}>
+<nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#1675d3' }}>
         <div className="container-fluid">
           <Link className="navbar-brand d-flex align-items-center" to="/">
             <img src={logo} alt="Logo" style={{ height: '50px', marginRight: '10px' }} />
@@ -89,8 +89,11 @@ const AddPetForm = ({ user, onLogout }) => {
               <li className="nav-item"><Link className="nav-link text-white" to="/">Home</Link></li>
               <li className="nav-item"><Link className="nav-link text-white" to="/pets">Pets</Link></li>
               <li className="nav-item"><Link className="nav-link text-white" to="/adopt">Adopt</Link></li>
+              {/* Conditional Requests link */}
+              {user?.role === 'admin' &&(
+                <li className="nav-item"><Link className="nav-link text-white" to="/requests">Requests</Link></li>
+              )}
               <li className="nav-item"><Link className="nav-link text-white" to="/about">About Us</Link></li>
-              <li className="nav-item"><Link className="nav-link text-white" to="/requests">Requests</Link></li>
               <li className="nav-item"><Link className="nav-link text-white" to="/contact">Contact Us</Link></li>
               {/* Conditional Admin link */}
               {user?.role === 'admin' && (

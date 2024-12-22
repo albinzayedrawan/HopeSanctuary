@@ -62,7 +62,7 @@ function App() {
           
           {/* Admin Route (only accessible by admins) */}
           <Route path="/admin" element={<ProtectedRoute user={user} adminOnly={true}><Admin user={user} onLogout={handleLogout} /></ProtectedRoute>} />
-          <Route path="/requests" element={<ProtectedRoute user={user}><Requests user={user} onLogout={handleLogout} /></ProtectedRoute>} /> {/* Add the Requests route */}
+          <Route path="/requests" element={<ProtectedRoute user={user} adminOnly={true}><Requests user={user} onLogout={handleLogout} /></ProtectedRoute>} /> {/* Add the Requests route */}
           <Route path="/admin/add-pet" element={<ProtectedRoute user={user} adminOnly={true}><AddPet user={user} onLogout={handleLogout} /></ProtectedRoute>} />
           <Route path="/admin/edit-pet/:petId" element={<ProtectedRoute user={user} adminOnly={true}><EditPet user={user} onLogout={handleLogout} /></ProtectedRoute>} /> {/* Add the EditPet route */}
           

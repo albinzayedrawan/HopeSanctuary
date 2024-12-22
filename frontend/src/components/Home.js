@@ -59,7 +59,7 @@ const Home = ({ user, onLogout }) => {
               <li className="nav-item"><Link className="nav-link text-white" to="/pets">Pets</Link></li>
               <li className="nav-item"><Link className="nav-link text-white" to="/adopt">Adopt</Link></li>
               {/* Conditional Requests link */}
-              {user && (
+              {user?.role === 'admin' &&(
                 <li className="nav-item"><Link className="nav-link text-white" to="/requests">Requests</Link></li>
               )}
               <li className="nav-item"><Link className="nav-link text-white" to="/about">About Us</Link></li>
@@ -130,7 +130,6 @@ const Home = ({ user, onLogout }) => {
                   alt={pet.name}
                   className="img-fluid rounded shadow fixed-size-img"
                 />
-                <p>{pet.name}</p>
               </div>
             ))
           ) : (

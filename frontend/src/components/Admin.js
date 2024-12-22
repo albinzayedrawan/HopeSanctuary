@@ -9,6 +9,7 @@ const Admin = ({ user, onLogout }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState(''); // Add search state
 
   useEffect(() => {
     const getPets = async () => {
@@ -44,6 +45,16 @@ const Admin = ({ user, onLogout }) => {
   const handleEditPet = (petId) => {
     navigate(`/admin/edit-pet/${petId}`);
   };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const filteredPets = pets.filter((pet) =>
+    pet.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    pet.species.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    pet.breed.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <>
@@ -96,11 +107,6 @@ const Admin = ({ user, onLogout }) => {
         <h1 className="text-center">Admin Dashboard</h1>
         
         {/* Filter, Sort, and Search */}
-        <div className="search-controls d-flex justify-content-center mb-3">
-          <button className="btn btn-filter me-2">Filter by Age</button>
-          <button className="btn btn-filter me-2">Filter by Gender</button>
-          <button className="btn btn-filter">Filter by Species</button>
-        </div>
 
         <div className="search-controls d-flex justify-content-center">
           <form className="d-flex align-items-center">
@@ -108,6 +114,8 @@ const Admin = ({ user, onLogout }) => {
               className="form-control me-2 w-50 search-bar"
               type="search"
               placeholder="Search"
+              value={searchQuery}
+              onChange={handleSearchChange}
             />
             <button className="btn btn-search" type="submit">Search</button>
           </form>
@@ -133,7 +141,7 @@ const Admin = ({ user, onLogout }) => {
           <p className="text-danger">{error}</p>
         ) : (
           <div className="row">
-            {pets.map((pet) => (
+            {filteredPets.map((pet) => (
               <div className="col-md-4 mb-4" key={pet._id}>
                 <div className="card">
                   <img src={pet.picture} className="card-img-top" alt={pet.name} />

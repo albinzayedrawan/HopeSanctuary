@@ -51,7 +51,7 @@ const PetsDetails = ({ user, onLogout }) => {
               <li className="nav-item"><Link className="nav-link text-white" to="/pets">Pets</Link></li>
               <li className="nav-item"><Link className="nav-link text-white" to="/adopt">Adopt</Link></li>
               {/* Conditional Requests link */}
-              {user && (
+              {user?.role === 'admin' && (
                 <li className="nav-item"><Link className="nav-link text-white" to="/requests">Requests</Link></li>
               )}
               <li className="nav-item"><Link className="nav-link text-white" to="/contact">Contact Us</Link></li>
