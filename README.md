@@ -8,11 +8,12 @@ A MERN stack pet adoption website that aims to simplify the process of finding h
 
 ## Instructions
 
-1. **Clone the Repository**  
+1. **Clone the Repository & Install Axios**  
 
    ```bash
    git clone https://github.com/albinzayedrawan/hopesanctuary.git
    cd hopesanctuary
+   npm install
    ```
 
 2. **Install Dependencies**  
