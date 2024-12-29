@@ -23,7 +23,7 @@ app.use("/api/pets", petRoute);
 app.use("/api/adoption-forms", adoptionFormRoute);
 app.use("/api/contact-forms", contactFormRoute);
 
-app.listen(port, (er) => {
+app.listen(port, '0.0.0.0', (er) => {
     if (er) {
         console.log(er);
     } else {
