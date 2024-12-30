@@ -1,6 +1,8 @@
 import axios from "axios";
 
 const API_BASE_URL = "http://localhost:5000/api";
+//const API_BASE_URL = "http://34.234.116.129:5000/api";
+//Comment the local host url and use the deployement url 
 
 export const fetchPets = async () => {
   try {
