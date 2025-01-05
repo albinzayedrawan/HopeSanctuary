@@ -13,9 +13,10 @@ const Login = ({ onLogin }) => {
     e.preventDefault(); // Prevent the default form submission
     setLoading(true);
     setError('');
-
+    
     try {
       const response = await fetch('http://localhost:5000/api/users/login', {
+      //const response = await fetch('http://34.234.116.129:5000/api/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
