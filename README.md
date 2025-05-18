@@ -81,6 +81,7 @@ A MERN stack pet adoption website that aims to simplify the process of finding h
 ```plaintext
 hopesanctuary/
 ├── backend/            # Backend API
+├── docs/               # Project Documentation
 ├── frontend/           # Frontend Application
 ├── CONTRIBUTING        # Project Contribution Instructions
 ├── LICENSE             # Project License
