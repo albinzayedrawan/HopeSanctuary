@@ -85,7 +85,7 @@ hopesanctuary/
 ├── frontend/           # Frontend Application
 ├── CONTRIBUTING        # Project Contribution Instructions
 ├── LICENSE             # Project License
-├── README.md           # Project Documentation
+├── README.md           # Project README
 ```
 
 ## Contributing
