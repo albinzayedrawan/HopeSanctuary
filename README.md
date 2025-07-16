@@ -90,7 +90,7 @@ hopesanctuary/
 
 ## Contributing
 
-We welcome contributions! See the [CONTRIBUTING](CONTRIBUTING) file for details.
+We welcome contributions! See the [CONTRIBUTING](CONTRIBUTING.md) file for details.
 
 ## License
 
